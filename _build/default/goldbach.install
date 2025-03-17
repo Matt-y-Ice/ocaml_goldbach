@@ -1,0 +1,8 @@
+lib: [
+  "_build/install/default/lib/goldbach/META"
+  "_build/install/default/lib/goldbach/dune-package"
+  "_build/install/default/lib/goldbach/opam"
+]
+bin: [
+  "_build/install/default/bin/goldbach"
+]

@@ -1,0 +1,4 @@
+(executable
+ (public_name goldbach)
+ (name main)
+ (libraries goldbach))
