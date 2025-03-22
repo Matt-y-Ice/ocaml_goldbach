@@ -6,15 +6,15 @@
   outputs = { self, nixpkgs }: {
     devShells.x86_64-linux.default =
       nixpkgs.legacyPackages.x86_64-linux.mkShell {
-        buildInputs = [
-          nixpkgs.legacyPackages.x86_64-linux.ocaml
-          nixpkgs.legacyPackages.x86_64-linux.dune_3
-          nixpkgs.legacyPackages.x86_64-linux.opam
-          nixpkgs.legacyPackages.x86_64-linux.ocamlPackages.ocaml-lsp
-          nixpkgs.legacyPackages.x86_64-linux.ocamlPackages.utop
-          nixpkgs.legacyPackages.x86_64-linux.ocamlPackages.ocamlformat
-          nixpkgs.legacyPackages.x86_64-linux.ocamlPackages.ocp-indent
-          nixpkgs.legacyPackages.x86_64-linux.binutils
+        buildInputs = with nixpkgs.legacyPackages.x86_64-linux; [
+          ocaml
+          dune_3
+          opam
+          ocamlPackages.ocaml-lsp
+          ocamlPackages.utop
+          ocamlPackages.ocamlformat
+          ocamlPackages.ocp-indent
+          binutils
         ];
       };
   };

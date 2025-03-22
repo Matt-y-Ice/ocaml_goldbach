@@ -1,4 +1,4 @@
-# dune exec -- goldbach ./exercise/data.txt
+# dune exec -- goldbach _exercise/data.txt
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /home/mattyice/.cache/dune/db
@@ -13,4 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /nix/store/fimshicz9gdaq3va0b8x8i8wdzq804qy-ocaml-5.2.1/bin/ocamlc.opt -config > /tmp/nix-shell.jCcxqZ/dune_a10a1e_output
+$ /nix/store/fimshicz9gdaq3va0b8x8i8wdzq804qy-ocaml-5.2.1/bin/ocamlc.opt -config > /tmp/nix-shell.X0SCWm/dune_2bec9e_output
