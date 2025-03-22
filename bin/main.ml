@@ -1,3 +1,16 @@
+(* This program implements the Goldbach conjecture which states that every even integer 
+   greater than 2 can be expressed as the sum of two prime numbers. The program uses 
+   the Sieve of Eratosthenes algorithm for efficient prime number generation and can:
+   - Process numbers from input files
+   - Handle default test values when no input file is provided
+   - Output results to both terminal and a file named "ocaml-results.txt"
+*)
+
+(* Implements the Sieve of Eratosthenes algorithm for prime number generation.
+   Optimized by:
+   - Only marking odd multiples for even numbers
+   - Using pre-computed square root
+   - Skipping even multiples during sieving *)
 let sieve_eratosthenes n =
   let arr = Array.make (n + 1) true in
   arr.(0) <- false;
@@ -19,12 +32,16 @@ let sieve_eratosthenes n =
   done;
   arr
 
+(* Converts the boolean array from sieve into a list of prime numbers *)
 let get_primes n =
   let arr = sieve_eratosthenes n in
   let result = ref [] in
   Array.iteri (fun i is_prime -> if is_prime then result := i :: !result) arr ;
   List.rev !result
 
+(* Finds all pairs of prime numbers that sum to the given even value.
+   Returns empty list for odd numbers or numbers less than 4.
+   Uses a hashtable for O(1) prime lookups *)
 let goldbach value =
   let result = ref [] in
   if value >= 4 && value mod 2 = 0 then
@@ -43,6 +60,7 @@ let goldbach value =
   else
     []
 
+(* Prints Goldbach pairs to terminal *)
 let print_goldbach value pairs =
   if List.length pairs = 0 then
     Printf.printf "We found no Goldbach pairs for %d.\n" value
@@ -54,6 +72,7 @@ let print_goldbach value pairs =
   end;
   print_newline ()
 
+(* Writes Goldbach pairs to output file *)
 let write_goldbach oc value pairs =
   if List.length pairs = 0 then
     Printf.fprintf oc "We found no Goldbach pairs for %d.\n" value
@@ -65,6 +84,8 @@ let write_goldbach oc value pairs =
   end;
   Printf.fprintf oc "\n"
 
+(* Processes a single input file, writing results to both terminal and output file.
+   Handles invalid input gracefully *)
 let process_file filename =
   let ic = open_in filename in
   let oc = open_out "ocaml-results.txt" in
@@ -90,8 +111,10 @@ let process_file filename =
       close_out_noerr oc;
       raise e
 
+(* Default test values used when no input file is provided *)
 let default_values = [3; 4; 14; 26; 100]
 
+(* Main program entry point - handles command line arguments and default values *)
 let () = 
   if Array.length Sys.argv > 1 then
     Array.iter process_file (Array.sub Sys.argv 1 (Array.length Sys.argv - 1))
