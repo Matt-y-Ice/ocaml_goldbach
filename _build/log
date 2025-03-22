@@ -1,4 +1,4 @@
-# dune build
+# dune exec -- goldbach ./exercise/data.txt
 # OCAMLPARAM: unset
 # Shared cache: enabled-except-user-rules
 # Shared cache location: /home/mattyice/.cache/dune/db
@@ -13,10 +13,4 @@
 #  ; build_dir = In_build_dir "default"
 #  ; instrument_with = []
 #  }
-$ /nix/store/fimshicz9gdaq3va0b8x8i8wdzq804qy-ocaml-5.2.1/bin/ocamlc.opt -config > /tmp/nix-shell.Ucbq7T/dune_aaf751_output
-$ (cd _build/default && /nix/store/fimshicz9gdaq3va0b8x8i8wdzq804qy-ocaml-5.2.1/bin/ocamlopt.opt -w @1..3@5..28@31..39@43@46..47@49..57@61..62@67@69-40 -strict-sequence -strict-formats -short-paths -keep-locs -g -I bin/.main.eobjs/byte -I bin/.main.eobjs/native -I lib/.goldbach.objs/byte -I lib/.goldbach.objs/native -intf-suffix .ml -no-alias-deps -opaque -o bin/.main.eobjs/native/dune__exe__Main.cmx -c -impl bin/main.ml)
-> File "bin/main.ml", line 15, characters 4-10:
-> 15 | let primes n =
->          ^^^^^^
-> Error (warning 32 [unused-value-declaration]): unused value primes.
-[2]
+$ /nix/store/fimshicz9gdaq3va0b8x8i8wdzq804qy-ocaml-5.2.1/bin/ocamlc.opt -config > /tmp/nix-shell.jCcxqZ/dune_a10a1e_output
